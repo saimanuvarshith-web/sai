@@ -1,0 +1,46 @@
+import pandas as pd
+# Load the engineering dataset
+df = pd.read_csv("machine_data.csv")
+# Display complete dataset
+print("ENGINEERING DATASET")
+print(df)
+# Display first 5 records
+print("\nFIRST 5 RECORDS")
+print(df.head())
+# Display last 5 records
+print("\nLAST 5 RECORDS")
+print(df.tail())
+# Display number of rows and columns
+print("\nDATASET SHAPE")
+print(df.shape)
+# Display column names
+print("\nCOLUMN NAMES")
+print(df.columns)
+# Display data types
+print("\nDATA TYPES")
+print(df.dtypes)
+# Display basic information
+print("\nDATASET INFORMATION")
+df.info()
+# Check missing values
+print("\nMISSING VALUES")
+print(df.isnull().sum())
+# Generate statistical summary
+print("\nSTATISTICAL SUMMARY")
+print(df.describe())
+# Calculate mean values
+print("\nAVERAGE VALUES")
+print("Temperature:", df["Temperature"].mean())
+print("Pressure:", df["Pressure"].mean())
+print("Vibration:", df["Vibration"].mean())
+print("Operating Hours:", df["Operating_Hours"].mean())
+# Find maximum and minimum temperature
+print("\nTEMPERATURE ANALYSIS")
+print("Maximum Temperature:", df["Temperature"].max())
+print("Minimum Temperature:", df["Temperature"].min())
+# Count machines according to status
+print("\nMACHINE STATUS")
+print(df["Status"].value_counts())
+# Display machines with high temperature
+print("\nMACHINES WITH TEMPERATURE ABOVE 85")
+print(df[df["Temperature"] > 85])
