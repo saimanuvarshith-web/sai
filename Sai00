@@ -1,0 +1,59 @@
+ Creating Arrays
+import numpy as np
+# One-dimensional array
+a = np.array([10,20,30,40])
+print(a)
+# Two-dimensional array
+b = np.array([[1,2,3], [4,5,6]])
+print(b)
+# Array Properties
+print(a.size)
+print(a.dtype)
+# Mathematical Operations
+x = np.array([1,2,3])
+y = np.array([4,5,6])
+print(x+y)
+print(x-y)
+print(x*y)
+print(x/y)
+# Statistical Operations
+data = np.array([10,20,30,40,50])
+print(np.mean(data))
+print(np.median(data))
+print(np.max(data))
+print(np.min(data))
+print(np.sum(data))
+#Creating a Series
+import pandas as pd
+s = pd.Series([100,200,300,400])
+print(s)
+# Creating a DataFrame
+data = {"Name":["Ravi","Anu","Kiran"],"Age":[20,21,22],
+        "Marks":[85,90,88]}
+df = pd.DataFrame(data)
+print(df)
+# Selecting Columns
+print(df["Name"])
+print(df[["Name","Marks"]]
+# Filtering Records
+print(df[df["Marks"]>85])
+#Adding a New Column
+df["Grade"]=["A","A+","A"]
+print(df)
+#Updating Values
+df.loc[0,"Marks"] = 95
+print(df)
+#Removing Columns
+df.drop("Grade",axis=1,inplace=True)
+print(df)
+# Handling Missing Values
+print(df.isnull())
+# Sorting Data
+print(df.sort_values(by="Marks"))
+#Grouping Data
+data = {
+    "Department":["CSE","CSE","AI","AI"],
+    "Marks":[90,85,95,88]
+}
+df = pd.DataFrame(data)
+print(df.groupby("Department").mean())
