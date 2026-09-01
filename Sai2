@@ -1,0 +1,60 @@
+import pandas as pd
+import numpy as np
+# Load dataset
+df = pd.read_csv("machine_dataa.csv")
+print("ORIGINAL DATASET")
+print(df)
+# ------------------------------------------------
+# 1. Check missing values
+# ------------------------------------------------
+print("\nMISSING VALUES")
+print(df.isnull())
+# ------------------------------------------------
+# 2. Handle missing numerical values
+#    Replace missing values with column mean
+# ------------------------------------------------
+numeric_columns = [
+    "Temperature",
+    "Pressure",
+    "Vibration",
+    "Operating_Hours"
+]
+for column in numeric_columns:
+    df[column] = df[column].fillna(df[column].mean())
+# ------------------------------------------------
+# 3. Handle missing categorical values
+# ------------------------------------------------
+df["Status"] = df["Status"].fillna("Unknown")
+# ------------------------------------------------
+# 4. Remove duplicate records
+# ------------------------------------------------
+df = df.drop_duplicates()
+# ------------------------------------------------
+# 5. Handle inconsistent Status entries
+# ------------------------------------------------
+df["Status"] = df["Status"].str.strip().str.title()
+# ------------------------------------------------
+# 6. Display cleaned dataset
+# ------------------------------------------------
+print("\nCLEANED DATASET")
+print(df)
+# ------------------------------------------------
+# 7. Check missing values after cleaning
+# ------------------------------------------------
+print("\nMISSING VALUES AFTER CLEANING")
+print(df.isnull().sum())
+# ------------------------------------------------
+# 8. Statistical summary
+# ------------------------------------------------
+print("\nSTATISTICAL SUMMARY")
+print(df.describe())
+# ------------------------------------------------
+# 9. Status count
+# ------------------------------------------------
+print("\nMACHINE STATUS COUNT")
+print(df["Status"].value_counts())
+# ------------------------------------------------
+# 10. Save cleaned dataset
+# ------------------------------------------------
+df.to_csv("cleaned_machine_data.csv", index=False)
+print("\nCleaned dataset saved successfully.")
